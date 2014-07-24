@@ -6,8 +6,9 @@
     <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
     <script type="text/javascript" charset="utf-8">
 
-    document.addEventListener("deviceready", onDeviceReady, false);
-
+	function onLoad(){
+		document.addEventListener("deviceready", onDeviceReady, false);
+	}
     // Global InAppBrowser reference
     var iabRef = null;
 
@@ -34,8 +35,18 @@
     // device APIs are available
     //
     function onDeviceReady() {
-         alert('device is ready')
+         alert('device is ready');
+		 document.addEventListener("online", onOnline, false);
+		 document.addEventListener("offline", onOffline, false);
     }
+	
+	function onOnline(){
+		alert('Device is Online');
+	}
+	
+	function onOffline(){
+		alert('Device is Offline');
+	}
 	
 	function openBrowser(){
 		iabRef = window.open('http://apache.org', '_blank', 'location=yes');
@@ -47,7 +58,7 @@
 
     </script>
   </head>
-  <body>
+  <body onload="onLoad()">
 	<button onclick="openBrowser()">inAppBrowser</button>
   </body>
 </html>
