@@ -8,6 +8,8 @@
 
 	function onLoad(){
 		document.addEventListener("deviceready", onDeviceReady, false);
+		document.addEventListener("online", onOnline, false);
+		document.addEventListener("offline", onOffline, false);
 	}
     // Global InAppBrowser reference
     var iabRef = null;
@@ -36,8 +38,6 @@
     //
     function onDeviceReady() {
          alert('device is ready');
-		 document.addEventListener("online", onOnline, false);
-		 document.addEventListener("offline", onOffline, false);
     }
 	
 	function onOnline(){
