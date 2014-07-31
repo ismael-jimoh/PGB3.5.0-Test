@@ -55,10 +55,15 @@
         iabRef.addEventListener('loaderror', iabLoadError);
         iabRef.addEventListener('exit', iabClose);
 	}
+	
+	function openPage(){
+		window.open('TestDLoad.html');
+	}
 
     </script>
   </head>
   <body onload="onLoad()">
 	<button onclick="openBrowser()">inAppBrowser</button>
+	<button onclick="openPage()">Next Page</button>
   </body>
 </html>

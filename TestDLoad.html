@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript">
+			function success(entry) {
+				alert("New Path: " + entry.fullPath);
+			}
+			function fail(error) {
+				alert(error.code);
+			}
+			downloadFile = function()
+			{
+				window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSystemSuccess, fail);
+				//This file already exists in this directory for me
+				window.resolveLocalFileSystemURI("file:///mnt/sdcard/Download/man.pdf", function(entry)
+				{
+					// The directory below exists for me
+					window.resolveLocalFileSystemURI("file:///mnt/sdcard/", 
+					function(destination) {
+						 file.copyTo(destination,"man1.pdf",success,fail);
+					})
+				})
+			}
+			function onFileSystemSuccess(fileSystem) {
+				console.log(fileSystem.name);
+			}
+			function openTest2(){
+				window.open("TestDLoad2.html")
+			}
+		</script>
+	</head>
+	<body>
+		<button onclick="downloadFile()">Download and Copy to New loaction</button>
+		<button onclick="openTest2()">Download and Copy to New loaction</button>
+	</body>
+</html>
