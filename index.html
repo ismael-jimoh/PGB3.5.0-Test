@@ -38,6 +38,8 @@
     //
     function onDeviceReady() {
          alert('device is ready');
+		 var smsplugin = cordova.require("info.asankan.phonegap.smsplugin.smsplugin");
+		 smsplugin.isSupported(function(){alert('SMS Plugin Supported')},function(){alert('SMS Plugin NOT Supported!!!!')});
     }
 	
 	function onOnline(){
@@ -59,11 +61,16 @@
 	function openPage(){
 		window.open('TestDLoad.html');
 	}
+	
+	function mySMS(){
+		smsplugin.send("0166262596","Testing SMS Plugin",function(){alert('message Sent')},function(){alert('Message NOT Sent')});
+	}
 
     </script>
   </head>
   <body onload="onLoad()">
 	<button onclick="openBrowser()">inAppBrowser</button>
 	<button onclick="openPage()">Next Page</button>
+	<p><button onclick="mySMS()">Send SMS</button></p>
   </body>
 </html>

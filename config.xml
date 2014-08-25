@@ -22,7 +22,7 @@
 	<gap:platform name="android" />
 	<gap:platform name="winphone" />
 	
-	<preference name="phonegap-version" value="3.5.0" />
+	<preference name="phonegap-version" value="2.9.0" />
 	<preference name="fullscreen" value="false" />
     <preference name="DisallowOverscroll" value="true" />
 	<preference name="LoadUrlTimeoutValue" value="10000"/>
@@ -69,11 +69,13 @@
 	<gap:plugin name="org.apache.cordova.file-transfer" />
 	<gap:plugin name="org.apache.cordova.network-information" />
 	<gap:plugin name="org.apache.cordova.media" />
-	<gap:plugin name="org.apache.cordova.inappbrowser"  />_
+	<gap:plugin name="org.apache.cordova.inappbrowser"  />
 	<gap:plugin name="org.apache.cordova.globalization" />
 	<gap:plugin name="org.apache.cordova.dialogs" />
 	<gap:plugin name="org.apache.cordova.splashscreen" />
 	<gap:plugin name="org.apache.cordova.vibration" />
+	
+	<gap:plugin name="info.ivanezko.phonegap.smsplugin" version="0.2.1" />
 	
 	<gap:config-file platform="android" parent="/manifest">
 		<supports-screens 
