@@ -22,7 +22,7 @@
 	<gap:platform name="android" />
 	<gap:platform name="winphone" />
 	
-	<preference name="phonegap-version" value="2.9.0" />
+	<preference name="phonegap-version" value="3.5.0" />
 	<preference name="fullscreen" value="false" />
     <preference name="DisallowOverscroll" value="true" />
 	<preference name="LoadUrlTimeoutValue" value="10000"/>
