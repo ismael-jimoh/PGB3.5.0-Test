@@ -38,8 +38,8 @@
     //
     function onDeviceReady() {
          alert('device is ready');
-		 //var smsplugin = cordova.require("info.asankan.phonegap.smsplugin.smsplugin");
-		 //smsplugin.isSupported(function(){alert('SMS Plugin Supported')},function(){alert('SMS Plugin NOT Supported!!!!')});
+		 var smsplugin = cordova.require("info.asankan.phonegap.smsplugin.smsplugin");
+		 smsplugin.isSupported(function(){alert('SMS Plugin Supported')},function(){alert('SMS Plugin NOT Supported!!!!')});
     }
 	
 	//function onOnline(){
