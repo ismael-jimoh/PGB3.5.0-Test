@@ -8,8 +8,8 @@
 
 	function onLoad(){
 		document.addEventListener("deviceready", onDeviceReady, false);
-		document.addEventListener("online", onOnline, false);
-		document.addEventListener("offline", onOffline, false);
+		//document.addEventListener("online", onOnline, false);
+		//document.addEventListener("offline", onOffline, false);
 	}
     // Global InAppBrowser reference
     var iabRef = null;
@@ -38,17 +38,17 @@
     //
     function onDeviceReady() {
          alert('device is ready');
-		 var smsplugin = cordova.require("info.asankan.phonegap.smsplugin.smsplugin");
-		 smsplugin.isSupported(function(){alert('SMS Plugin Supported')},function(){alert('SMS Plugin NOT Supported!!!!')});
+		 //var smsplugin = cordova.require("info.asankan.phonegap.smsplugin.smsplugin");
+		 //smsplugin.isSupported(function(){alert('SMS Plugin Supported')},function(){alert('SMS Plugin NOT Supported!!!!')});
     }
 	
-	function onOnline(){
-		alert('Device is Online');
-	}
+	//function onOnline(){
+		//alert('Device is Online');
+	//}
 	
-	function onOffline(){
-		alert('Device is Offline');
-	}
+	//function onOffline(){
+		//alert('Device is Offline');
+	//}
 	
 	function openBrowser(){
 		iabRef = window.open('http://apache.org', '_blank', 'location=yes');
