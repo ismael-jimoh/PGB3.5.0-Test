@@ -65,6 +65,20 @@
 	function mySMS(){
 		smsplugin.send("+0166262596","Testing SMS Plugin",function(){alert('message Sent')},function(){alert('Message NOT Sent')});
 	}
+	
+	// alert dialog dismissed
+    function alertDismissed() {
+        // do something
+    }
+
+    function showAlert() {
+        navigator.notification.alert(
+            'You are the winner!',  // message
+            alertDismissed,         // callback
+            'Game Over',            // title
+            'Done'                  // buttonName
+        );
+    }
 
     </script>
   </head>
@@ -72,5 +86,6 @@
 	<button onclick="openBrowser()">inAppBrowser</button>
 	<button onclick="openPage()">Next Page</button>
 	<p><button onclick="mySMS()">Send SMS</button></p>
+	<p><a href="#" onclick="showAlert(); return false;">Show Alert</a></p>
   </body>
 </html>
