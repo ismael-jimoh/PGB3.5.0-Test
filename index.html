@@ -3,7 +3,7 @@
   <head>
     <title>Contact Example</title>
 
-    <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     <script type="text/javascript" charset="utf-8">
 
     // Wait for device API libraries to load
@@ -14,7 +14,11 @@
     //
 
     function onDeviceReady() {
-        // create a new contact
+        
+    }
+	
+	function myContactFinder(){
+		// create a new contact
         var contact = navigator.contacts.create();
 
         // store contact phone numbers in ContactField[]
@@ -32,7 +36,7 @@
         options.filter = "";
         filter = ["displayName", "phoneNumbers"];
         navigator.contacts.find(onSuccess, onError,filter,  options);
-    }
+	}
 
     // onSuccess: Get a snapshot of the current contacts
     //
@@ -58,5 +62,6 @@
   <body>
     <h1>Example</h1>
     <p>Find Contacts</p>
+	<button onclick="myContactFinder()">Find Contact</button>
   </body>
 </html>
