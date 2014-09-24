@@ -41,7 +41,7 @@
 	
 	function openInAppBrowser(link){
 		alert(link);
-		iabRef = window.open("link", '_system', 'location=yes');
+		iabRef = window.open(link, '_system', 'location=yes');
          iabRef.addEventListener('loadstart', iabLoadStart);
          iabRef.addEventListener('loadstop', iabLoadStop);
          iabRef.addEventListener('loaderror', iabLoadError);
@@ -52,6 +52,6 @@
   </head>
   <body>
   <br><br>
-  <a href="#" onclick="'http://apache.org'">Open In System Browser</a>
+  <a href="#" onclick="openInAppBrowser('http://apache.org')">Open In System Browser</a>
   </body>
 </html>
