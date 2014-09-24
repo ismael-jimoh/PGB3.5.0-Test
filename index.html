@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Contact Example</title>
+    <title>InAppBrowser.removeEventListener Example</title>
 
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     <script type="text/javascript" charset="utf-8">
@@ -10,58 +10,47 @@
     //
     document.addEventListener("deviceready", onDeviceReady, false);
 
+    // Global InAppBrowser reference
+    var iabRef = null;
+
+    function iabLoadStart(event) {
+        alert(event.type + ' - ' + event.url);
+    }
+
+    function iabLoadStop(event) {
+        alert(event.type + ' - ' + event.url);
+    }
+
+    function iabLoadError(event) {
+        alert(event.type + ' - ' + event.message);
+    }
+
+    function iabClose(event) {
+         alert(event.type);
+         iabRef.removeEventListener('loadstart', iabLoadStart);
+         iabRef.removeEventListener('loadstop', iabLoadStop);
+         iabRef.removeEventListener('loaderror', iabLoadError);
+         iabRef.removeEventListener('exit', iabClose);
+    }
+
     // device APIs are available
     //
-
     function onDeviceReady() {
-        
+         alert("Device is ready")
     }
 	
-	function myContactFinder(){
-		// create a new contact
-        var contact = navigator.contacts.create();
-
-        // store contact phone numbers in ContactField[]
-        var phoneNumbers = [];
-        phoneNumbers[0] = new ContactField('work', '212-555-1234', false);
-        phoneNumbers[1] = new ContactField('mobile', '917-555-5432', true); // preferred number
-        phoneNumbers[2] = new ContactField('home', '203-555-7890', false);
-        contact.phoneNumbers = phoneNumbers;
-
-        // save the contact
-        contact.save();
-
-        // search contacts, returning display name and phone numbers
-        var options = new ContactFindOptions();
-        options.filter = "";
-        filter = ["displayName", "phoneNumbers"];
-        navigator.contacts.find(onSuccess, onError,filter,  options);
+	function openInAppBrowser(link){
+		iabRef = window.open(link, '_system', 'location=yes');
+         iabRef.addEventListener('loadstart', iabLoadStart);
+         iabRef.addEventListener('loadstop', iabLoadStop);
+         iabRef.addEventListener('loaderror', iabLoadError);
+         iabRef.addEventListener('exit', iabClose);
 	}
-
-    // onSuccess: Get a snapshot of the current contacts
-    //
-    function onSuccess(contacts) {
-        for (var i = 0; i < contacts.length; i++) {
-            // display phone numbers
-            for (var j = 0; j < contacts[i].phoneNumbers.length; j++) {
-                alert("Type: "      + contacts[i].phoneNumbers[j].type  + "\n" +
-                      "Value: "     + contacts[i].phoneNumbers[j].value + "\n" +
-                      "Preferred: " + contacts[i].phoneNumbers[j].pref);
-            }
-        }
-    };
-
-    // onError: Failed to get the contacts
-    //
-    function onError(contactError) {
-        alert('onError!');
-    }
 
     </script>
   </head>
   <body>
-    <h1>Example</h1>
-    <p>Find Contacts</p>
-	<button onclick="myContactFinder()">Find Contact</button>
+  <br><br>
+  <a href="#" onclick="'http://apache.org'">Open In System Browser</a>
   </body>
 </html>
