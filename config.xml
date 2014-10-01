@@ -86,7 +86,7 @@
 	
 	<gap:config-file platform="ios" parent="UISupportedInterfaceOrientations" overwrite="true">
     <array>
-        <string>UIInterfaceOrientationLandscapeOmg</string>
+        <string>UIInterfaceOrientationLandscapeRight</string>
     </array>
 </gap:config-file>
 	
