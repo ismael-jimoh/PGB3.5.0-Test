@@ -1,57 +1,45 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>InAppBrowser.removeEventListener Example</title>
+    <title>Device Properties Example</title>
 
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     <script type="text/javascript" charset="utf-8">
 
-    // Wait for device API libraries to load
+    // Wait for Cordova to load
     //
     document.addEventListener("deviceready", onDeviceReady, false);
 
-    // Global InAppBrowser reference
-    var iabRef = null;
-
-    function iabLoadStart(event) {
-        alert(event.type + ' - ' + event.url);
-    }
-
-    function iabLoadStop(event) {
-        alert(event.type + ' - ' + event.url);
-    }
-
-    function iabLoadError(event) {
-        alert(event.type + ' - ' + event.message);
-    }
-
-    function iabClose(event) {
-         alert(event.type);
-         iabRef.removeEventListener('loadstart', iabLoadStart);
-         iabRef.removeEventListener('loadstop', iabLoadStop);
-         iabRef.removeEventListener('loaderror', iabLoadError);
-         iabRef.removeEventListener('exit', iabClose);
-    }
-
-    // device APIs are available
+    // Cordova is ready
     //
     function onDeviceReady() {
-         alert("Device is ready")
+        navigator.geolocation.getCurrentPosition(onSuccess, onError);
     }
-	
-	function openInAppBrowser(link){
-		alert(link);
-		iabRef = window.open(link, '_system', 'location=yes');
-         iabRef.addEventListener('loadstart', iabLoadStart);
-         iabRef.addEventListener('loadstop', iabLoadStop);
-         iabRef.addEventListener('loaderror', iabLoadError);
-         iabRef.addEventListener('exit', iabClose);
-	}
+
+    // onSuccess Geolocation
+    //
+    function onSuccess(position) {
+        var element = document.getElementById('geolocation');
+        element.innerHTML = 'Latitude: '           + position.coords.latitude              + '<br />' +
+                            'Longitude: '          + position.coords.longitude             + '<br />' +
+                            'Altitude: '           + position.coords.altitude              + '<br />' +
+                            'Accuracy: '           + position.coords.accuracy              + '<br />' +
+                            'Altitude Accuracy: '  + position.coords.altitudeAccuracy      + '<br />' +
+                            'Heading: '            + position.coords.heading               + '<br />' +
+                            'Speed: '              + position.coords.speed                 + '<br />' +
+                            'Timestamp: '          +                                   position.timestamp          + '<br />';
+    }
+
+    // onError Callback receives a PositionError object
+    //
+    function onError(error) {
+        alert('code: '    + error.code    + '\n' +
+                'message: ' + error.message + '\n');
+    }
 
     </script>
   </head>
   <body>
-  <br><br>
-  <a href="#" onclick="openInAppBrowser('http://apache.org')">Open In System Browser</a>
+    <p id="geolocation">Finding geolocation...</p>
   </body>
 </html>
